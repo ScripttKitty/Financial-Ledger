@@ -2,8 +2,7 @@
     finish addTransaction method
  * Finish readAllEntries method
  *
- *
- */
+*/
 
 
 package org.example;
