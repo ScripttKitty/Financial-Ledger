@@ -1,8 +1,9 @@
+//TODO: delete any methods we do not need in the end
+
 package org.example;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Scanner;
 
 public class Transactions {
 
@@ -22,6 +23,7 @@ public class Transactions {
         this.vendor = vendor;
         this.amount = amount;
     }
+
 
 
 
@@ -69,6 +71,7 @@ public class Transactions {
         this.amount = amount;
     }
 
+    //TODO: fix toString format
     @Override
     public String toString() {
         return "Transactions: " +

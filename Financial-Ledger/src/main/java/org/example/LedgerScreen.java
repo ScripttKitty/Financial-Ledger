@@ -1,3 +1,7 @@
+/*TODO: create all methods for  Entries, deposits, payments, and reports
+
+ */
+
 package org.example;
 
 import java.util.Scanner;

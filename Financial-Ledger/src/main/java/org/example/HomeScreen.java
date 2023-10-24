@@ -1,4 +1,14 @@
+/*TODO: add deposit method
+    add payment and deposit to CSV file
+
+ */
+
+
 package org.example;
+
+
+
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
@@ -26,16 +36,16 @@ public class HomeScreen {
             String userChoice = scanner.next();
 
             switch (userChoice) {
-                case "D","d":
+                case "D", "d":
                     // use adding a deposit method
                     break;
-                case "P","p":
+                case "P", "p":
                     // use a payment method here
                     break;
-                case "L","l":
+                case "L", "l":
                     // Implement the ledger
                     break;
-                case "X","x":
+                case "X", "x":
                     System.out.println("Thank you for using our services. Goodbye.");
                     exit = true;
                     break;
@@ -47,14 +57,15 @@ public class HomeScreen {
         }
 
     }
+
     public void addDeposit() {
-         Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         //Transactions depositTransaction = new Transactions();
 
 
     }
 
-     public static void  makePayment() {
+    public static void makePayment() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the date in YYYY-MM-DD format: ");
         String dateInput = scanner.nextLine();
@@ -70,12 +81,10 @@ public class HomeScreen {
         Double amount = scanner.nextDouble();
 
         Transactions payment = new Transactions(date, time, desc, vendor, -amount);
-       //.addTransaction(payment);
-
+        //.addTransaction(payment);
         //add it to the CSV file
 
     }
-
 
 
     //Come back to this if I have time

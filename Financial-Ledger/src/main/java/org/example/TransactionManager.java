@@ -1,3 +1,11 @@
+/*TODO: add file writer
+    finish addTransaction method
+ * Finish readAllEntries method
+ *
+ *
+ */
+
+
 package org.example;
 
 import java.io.BufferedReader;
@@ -10,13 +18,17 @@ import java.util.ArrayList;
 //This class will contain methods to read form and write to the transactions.csv file
 public class TransactionManager {
 
+    //TODO: add file writer
     public void addTransaction(ArrayList<Transactions> transactions){
-        try (Writer)
-        //  private static ArrayList<Transactions> readAllEntriesFromFile(String transactions) {
-        //            ArrayList<Transactions> entries = new ArrayList<>();
-        //            return entries;
-        //        }
+        //try (Writer)
+
     }
+
+    //Read all entries method
+    //  private static ArrayList<Transactions> readAllEntriesFromFile(String transactions) {
+    //            ArrayList<Transactions> entries = new ArrayList<>();
+    //            return entries;
+    //        }
 
     private static Transactions readEntryFromFile(String transactions) {
         Transactions entry1 = null; //test entry initialized
