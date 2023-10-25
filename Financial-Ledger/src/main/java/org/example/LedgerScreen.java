@@ -7,21 +7,19 @@ import java.util.Scanner;
 
 //Main method
     public class LedgerScreen {
-        private TransactionOrganizer transactionManager;
+        private TransactionOrganizer transactionOrganizer;
 
         //method
-        public LedgerScreen(TransactionOrganizer transactionManager) {
-
-            this.transactionManager = transactionManager;
+        public LedgerScreen(TransactionOrganizer transactionOrganizer) {
+            this.transactionOrganizer = transactionOrganizer;
         }
 
-        //method
+        //method maybe rename display2
         public void display() {
             Scanner scanner = new Scanner(System.in);
             boolean exit = false;
-
             while (!exit) {
-                System.out.println("What would you like to see?");
+                System.out.println("What would you like to see?\n");
                 System.out.println("A) All Entries");
                 System.out.println("D) Deposits");
                 System.out.println("P) Payments");
@@ -40,20 +38,15 @@ import java.util.Scanner;
                     case "P","p":
                         // Use display payments method here
                         break;
-                    case "R":
+                    case "R", "r:":
                         //  Use report screen method here
                         break;
-                    case "H":
+                    case "H", "h":
                         return;
                     default:
                         System.out.println("Invalid option. Please try again.");
                 } //end of switch
             } //end of loop
-
-
-
-
-
         }
     }
 

@@ -12,17 +12,16 @@ import java.util.Scanner;
 
 //main method
 public class HomeScreen {
-    private TransactionOrganizer transactionManager;
+    private TransactionOrganizer transactionOrganizer;
 
     //THis method
-    public HomeScreen(TransactionOrganizer transactionManager) {
-
-        this.transactionManager = transactionManager;
+    public HomeScreen(TransactionOrganizer transactionOrganizer) {
+        this.transactionOrganizer = transactionOrganizer;
     }
 
     //This method is used to display the home screen and saves their input under userChoice
     public void display() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner2 = new Scanner(System.in);
         boolean exit = false;
 
         //This while loop runs and displays the choices for the user
@@ -33,14 +32,43 @@ public class HomeScreen {
             System.out.println("L) Ledger");
             System.out.println("X) Exit");
 
-            String userChoice = scanner.next();
+            String userChoice = scanner2.next();
 
             switch (userChoice) {
                 case "D", "d":
-                    // use deposit method here
+                    Scanner scanner1 = new Scanner(System.in);
+                    System.out.println("Enter the date in YYYY-MM-DD format: ");
+                    String dateInput = scanner1.nextLine();
+                    LocalDate date = LocalDate.parse(dateInput);
+                    System.out.println("Enter the time in HH:MM:SS format: ");
+                    String timeInput = scanner1.nextLine();
+                    LocalTime time = LocalTime.parse(timeInput);
+                    System.out.println("Enter a description: ");
+                    String desc = scanner1.nextLine();
+                    System.out.println("Enter the vendor name: ");
+                    String vendor = scanner1.nextLine();
+                    System.out.println("Enter the deposit amount: ");
+                    Double amount = scanner1.nextDouble();
+
+                    Transactions deposit = new Transactions(date, time, desc, vendor, amount);
+                    transactionOrganizer.addTransaction(deposit);
                     break;
                 case "P", "p":
-                    // use  payment method here
+                    System.out.println("Enter the date in YYYY-MM-DD format: ");
+                    String dateInput2 = scanner2.nextLine();
+                    LocalDate date2 = LocalDate.parse(dateInput2);
+                    System.out.println("Enter the time in HH:MM:SS format: ");
+                    String timeInput2 = scanner2.nextLine();
+                    LocalTime time2 = LocalTime.parse(timeInput2);
+                    System.out.println("Enter a description: ");
+                    String desc2 = scanner2.nextLine();
+                    System.out.println("Enter the vendor name: ");
+                    String vendor2 = scanner2.nextLine();
+                    System.out.println("Enter the amount paid: ");
+                    Double amount2 = scanner2.nextDouble();
+
+                    Transactions payment = new Transactions(date2, time2, desc2, vendor2, -amount2);
+                    transactionOrganizer.addTransaction(payment);
                     break;
                 case "L", "l":
                     // Implement the ledger
@@ -57,6 +85,7 @@ public class HomeScreen {
         }
 
     }
+
     //method
     public void addDeposit() {
         Scanner scanner = new Scanner(System.in);
@@ -67,22 +96,6 @@ public class HomeScreen {
 
     //method
     public static void makePayment() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter the date in YYYY-MM-DD format: ");
-        String dateInput = scanner.nextLine();
-        LocalDate date = LocalDate.parse(dateInput);
-        System.out.println("Please enter the time in HH:MM:SS format: ");
-        String timeInput = scanner.nextLine();
-        LocalTime time = LocalTime.parse(timeInput);
-        System.out.println("What is this payment for? ");
-        String desc = scanner.nextLine();
-        System.out.println("Who did you pay this to? ");
-        String vendor = scanner.nextLine();
-        System.out.println("How much did you pay? ");
-        Double amount = scanner.nextDouble();
-
-        Transactions payment = new Transactions(date, time, desc, vendor, -amount);
-        //.addTransaction(payment);
         //add it to the CSV file
 
     }

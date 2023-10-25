@@ -1,26 +1,50 @@
-/*TODO: add file writer
+/*TODO:
     finish addTransaction method
  * Finish readAllEntries method
- *
 */
 
 package org.example;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.List;
 
-//This class will contain methods to read form and write to the transactions.csv file
+//This class will contain methods to read from and write to the transactions.csv file
 public class TransactionOrganizer {
+    private List<Transactions> transList;
 
-    //TODO: add file writer
-    //method
-    public void addTransaction(ArrayList<Transactions> transactions){
-        //try (Writer)
+
+    public void addTransaction(Transactions entry){
+       transList.add(entry);
+       makeTransaction(transList);
 
     }
+
+    //method
+    public void makeTransaction(List<Transactions> transactionsList) {
+        try (FileWriter fileWriter = new FileWriter("transactions.csv")) {
+            String info = null;
+            for (Transactions transaction : transactionsList) {
+                //The join() method concatenates the elements and returns the string
+                info = String.join(" | " +
+                        transaction.getTransDate() +
+                        transaction.getTransTime() +
+                        transaction.getDescription() +
+                        transaction.getVendor() +
+                        transaction.getAmount());
+            }
+            ; //end of for
+            fileWriter.write(info + "\n");
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }// end of add transaction method
 
     //Read all entries method
     //  private static ArrayList<Transactions> readAllEntriesFromFile(String transactions) {
@@ -28,7 +52,7 @@ public class TransactionOrganizer {
     //            return entries;
     //        }
 
-    //method
+    //method need to fix a few things
     private static Transactions readEntryFromFile(String transaction) {
         Transactions entry1 = null; //test entry initialized
         BufferedReader transFileReader = null;
@@ -51,14 +75,6 @@ public class TransactionOrganizer {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        //  catch (IOException e){
-        //      throw new RuntimeException(e);
-        //  }
-
-
-
-
-
 
 
     }

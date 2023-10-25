@@ -10,8 +10,8 @@ public class Main {
     public static void main(String[] args) {
 
 
-        TransactionOrganizer transactionManager = new TransactionOrganizer();
-        HomeScreen homeScreen = new HomeScreen(transactionManager);
+        TransactionOrganizer transactionOrganizer = new TransactionOrganizer();
+        HomeScreen homeScreen = new HomeScreen(transactionOrganizer);
         homeScreen.display();
 
 
