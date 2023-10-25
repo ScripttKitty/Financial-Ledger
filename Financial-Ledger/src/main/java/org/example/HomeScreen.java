@@ -6,17 +6,17 @@
 
 package org.example;
 
-
-
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
 
+//main method
 public class HomeScreen {
-    private TransactionManager transactionManager;
+    private TransactionOrganizer transactionManager;
 
-    public HomeScreen(TransactionManager transactionManager) {
+    //THis method
+    public HomeScreen(TransactionOrganizer transactionManager) {
+
         this.transactionManager = transactionManager;
     }
 
@@ -37,10 +37,10 @@ public class HomeScreen {
 
             switch (userChoice) {
                 case "D", "d":
-                    // use adding a deposit method
+                    // use deposit method here
                     break;
                 case "P", "p":
-                    // use a payment method here
+                    // use  payment method here
                     break;
                 case "L", "l":
                     // Implement the ledger
@@ -57,7 +57,7 @@ public class HomeScreen {
         }
 
     }
-
+    //method
     public void addDeposit() {
         Scanner scanner = new Scanner(System.in);
         //Transactions depositTransaction = new Transactions();
@@ -65,6 +65,7 @@ public class HomeScreen {
 
     }
 
+    //method
     public static void makePayment() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the date in YYYY-MM-DD format: ");

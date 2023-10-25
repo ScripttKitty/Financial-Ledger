@@ -24,10 +24,6 @@ public class Transactions {
         this.amount = amount;
     }
 
-
-
-
-
     public LocalDate getTransDate() {
         return transDate;
     }

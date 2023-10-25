@@ -3,19 +3,19 @@
  */
 
 package org.example;
-
 import java.util.Scanner;
 
-
-
-
+//Main method
     public class LedgerScreen {
-        private TransactionManager transactionManager;
+        private TransactionOrganizer transactionManager;
 
-        public LedgerScreen(TransactionManager transactionManager) {
+        //method
+        public LedgerScreen(TransactionOrganizer transactionManager) {
+
             this.transactionManager = transactionManager;
         }
 
+        //method
         public void display() {
             Scanner scanner = new Scanner(System.in);
             boolean exit = false;
@@ -47,8 +47,13 @@ import java.util.Scanner;
                         return;
                     default:
                         System.out.println("Invalid option. Please try again.");
-                }
-            }
+                } //end of switch
+            } //end of loop
+
+
+
+
+
         }
     }
 

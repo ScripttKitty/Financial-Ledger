@@ -4,20 +4,19 @@
  *
 */
 
-
 package org.example;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.Writer;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
 //This class will contain methods to read form and write to the transactions.csv file
-public class TransactionManager {
+public class TransactionOrganizer {
 
     //TODO: add file writer
+    //method
     public void addTransaction(ArrayList<Transactions> transactions){
         //try (Writer)
 
@@ -29,7 +28,8 @@ public class TransactionManager {
     //            return entries;
     //        }
 
-    private static Transactions readEntryFromFile(String transactions) {
+    //method
+    private static Transactions readEntryFromFile(String transaction) {
         Transactions entry1 = null; //test entry initialized
         BufferedReader transFileReader = null;
         try {

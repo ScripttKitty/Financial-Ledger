@@ -5,10 +5,12 @@
 
 package org.example;
 
+//main method
 public class Main {
     public static void main(String[] args) {
 
-        TransactionManager transactionManager = new TransactionManager();
+
+        TransactionOrganizer transactionManager = new TransactionOrganizer();
         HomeScreen homeScreen = new HomeScreen(transactionManager);
         homeScreen.display();
 
