@@ -5,24 +5,34 @@
 
 package org.example;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
+import java.nio.Buffer;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 //This class will contain methods to read from and write to the transactions.csv file
 public class TransactionOrganizer {
+    //declaring List
     private List<Transactions> transList;
 
-
-    public void addTransaction(Transactions entry){
-       transList.add(entry);
-       makeTransaction(transList);
+    //default constructor
+    public TransactionOrganizer() {
 
     }
+
+    //initializes transList and adds entries to it
+    public void addTransaction(Transactions entry) {
+
+        if (transList == null) {
+            transList = new ArrayList<>();
+        }
+        transList.add(entry);
+        makeTransaction(transList);
+
+    }
+
 
     //method
     public void makeTransaction(List<Transactions> transactionsList) {
@@ -36,8 +46,8 @@ public class TransactionOrganizer {
                         transaction.getDescription() +
                         transaction.getVendor() +
                         transaction.getAmount());
-            }
-            ; //end of for
+            } //end of for loop
+
             fileWriter.write(info + "\n");
 
         } catch (IOException e) {
@@ -46,37 +56,51 @@ public class TransactionOrganizer {
 
     }// end of add transaction method
 
-    //Read all entries method
-    //  private static ArrayList<Transactions> readAllEntriesFromFile(String transactions) {
-    //            ArrayList<Transactions> entries = new ArrayList<>();
-    //            return entries;
-    //        }
 
-    //method need to fix a few things
-    private static Transactions readEntryFromFile(String transaction) {
-        Transactions entry1 = null; //test entry initialized
-        BufferedReader transFileReader = null;
-        try {
-            transFileReader = new BufferedReader(new FileReader(("transactions.csv")));
-            String transactionString = transFileReader.readLine();
-            String[] transactionData = transactionString.split("\\|");
+    //May need to change else statement
+    public List<Transactions> readEntries() {
 
+        try (BufferedReader transFileReader = new BufferedReader(new FileReader("transactions.csv"))) {
+            String transactionString;
+            while ((transactionString = transFileReader.readLine()) != null) {
+                String[] transactionData = transactionString.split("\\|");
 
-            LocalDate transDate = LocalDate.parse(transactionData[0]);
-            LocalTime transTime = LocalTime.parse(transactionData[1]);
-            String description = transactionData[2];
-            String vendor = transactionData[3];
-            Double amount = Double.parseDouble(transactionData[4]);
+               // if (transactionData.length == 5) {
+                    LocalDate transDate = LocalDate.parse(transactionData[0]);
+                    LocalTime transTime = LocalTime.parse(transactionData[1]);
+                    String description = transactionData[2];
+                    String vendor = transactionData[3];
+                    Double amount = Double.parseDouble(transactionData[4]);
 
-            entry1 = new Transactions(transDate.now(), transTime.now(), "vanilla mocha", "caribou coffee", 2.50); //test entry with param
-            return entry1;
+                    // Creates a Transaction object and stores it
+                    Transactions entry = new Transactions(transDate, transTime, description, vendor, amount);
+                    transList.add(entry);
 
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+               // } else {
+                    //Fix
+                    System.out.println("Invalid data provided.");
+              //  }
+            } //end of while loop
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return transList;
 
+    }//end of read entry
+
+
+    public void displayAll(){
 
     }
+
+    public void displayDeposits(){
+
+    }
+
+    public void displayPayments(){
+
+    }
+
+
 }
 
