@@ -5,7 +5,6 @@
 package org.example;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 
 //Main method
@@ -43,7 +42,8 @@ import java.util.Scanner;
                         displayPayments();
                         break;
                     case "r:":
-                        //  Use report screen method here
+                        ReportScreen reportScreen = new ReportScreen(transactionOrganizer);
+                        reportScreen.display3();
                         break;
                     case "h":
                         return;

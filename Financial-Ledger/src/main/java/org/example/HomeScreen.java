@@ -27,7 +27,7 @@ public class HomeScreen {
         while (!exit) {
             System.out.println("\nPlease select an option: \n");
             System.out.println("D) Add Deposit");
-            System.out.println("P) Make Payment (Debit)");
+            System.out.println("P) Make Payment");
             System.out.println("L) Ledger");
             System.out.println("X) Exit");
 
