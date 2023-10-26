@@ -37,17 +37,16 @@ public class TransactionOrganizer {
         try (BufferedWriter bufWriter = new BufferedWriter ( new FileWriter("transactions.csv", true ))) {
 
             for (Transactions transaction : list) {
-                //The join() method concatenates the elements and returns the string
-              String  info = "\\|" +
-                        transaction.getTransDate() +
-                        transaction.getTransTime() +
-                        transaction.getDescription() +
-                        transaction.getVendor() +
+              String  info =
+                        transaction.getTransDate() + " | " +
+                        transaction.getTransTime() + " | " +
+                        transaction.getDescription() + " | " +
+                        transaction.getVendor() + " | " +
                         transaction.getAmount();
 
                 bufWriter.write(info + "\n");
 
-                System.out.println(info);
+                System.out.println("\nThank you. Your entry has been saved.");
             } //end of for loop
             bufWriter.close();
 
@@ -92,40 +91,6 @@ public class TransactionOrganizer {
 
     }//end of read entry
 
-
-    public void displayAll(){
-        List<Transactions> list = readEntries();
-        Collections.reverse(list);
-
-        for (Transactions transactions : list) {
-            System.out.println(transactions);
-        }
-
-    }
-
-    public void displayDeposits(){
-        List<Transactions> list = readEntries();
-        Collections.reverse(list);
-
-        for (Transactions transactions: list){
-            if(transactions.getAmount() > 0){
-                System.out.println(transactions);
-
-            }
-        }
-
-    }
-
-    public void displayPayments(){
-        List<Transactions> list = readEntries();
-        Collections.reverse(list);
-
-        for (Transactions transactions: list){
-            if(transactions.getAmount() < 0){
-                System.out.println(transactions);
-            }
-        }
-    }
 
 
 }

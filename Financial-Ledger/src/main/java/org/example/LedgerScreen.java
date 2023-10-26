@@ -3,11 +3,14 @@
  */
 
 package org.example;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 //Main method
     public class LedgerScreen {
-        private static TransactionOrganizer transactionOrganizer;
+        private TransactionOrganizer transactionOrganizer;
 
         //method
         public LedgerScreen(TransactionOrganizer transactionOrganizer) {
@@ -15,7 +18,7 @@ import java.util.Scanner;
         }
 
         //method maybe rename display2
-        public static void display2() {
+        public void display2() {
             Scanner scanner = new Scanner(System.in);
             boolean exit = false;
 
@@ -29,29 +32,74 @@ import java.util.Scanner;
 
                 String userChoice = scanner.next();
 
-                switch (userChoice) {
-                    case "A","a":
-                        // Use display all entries method here
-                        transactionOrganizer.displayAll();
+                switch (userChoice.toLowerCase()) {
+                    case "a":
+                        displayAll();
                         break;
-                    case "D","d":
-                        // Use display deposits method here
-                        transactionOrganizer.displayDeposits();
+                    case "d":
+                        displayDeposits();
                         break;
-                    case "P","p":
-                        // Use display payments method here
-                        transactionOrganizer.displayPayments();
+                    case "p":
+                        displayPayments();
                         break;
-                    case "R", "r:":
+                    case "r:":
                         //  Use report screen method here
                         break;
-                    case "H", "h":
+                    case "h":
                         return;
                     default:
                         System.out.println("Not a valid option. Please try again.");
                 } //end of switch
             } //end of loop
+        }// end of display method
+
+    public void displayAll() {
+        List<Transactions> transactions = transactionOrganizer.readEntries();
+        Collections.reverse(transactions);
+
+        if (transactions.isEmpty()) {
+            System.out.println("No transactions to display.");
+        } else {
+            for (Transactions transaction : transactions) {
+                System.out.println(transaction);
+            }
         }
+    }
+
+    public void displayDeposits() {
+        List<Transactions> transactions = transactionOrganizer.readEntries();
+        Collections.reverse(transactions);
+
+        boolean hasDeposits = false;
+        for (Transactions transaction : transactions) {
+            if (transaction.getAmount() > 0) {
+                System.out.println(transaction);
+                hasDeposits = true;
+            }
+        }
+
+        if (!hasDeposits) {
+            System.out.println("No deposits to display.");
+        }
+    }
+
+    public void displayPayments() {
+        List<Transactions> transactions = transactionOrganizer.readEntries();
+        Collections.reverse(transactions);
+
+        boolean hasPayments = false;
+        for (Transactions transaction : transactions) {
+            if (transaction.getAmount() < 0) {
+                System.out.println(transaction);
+                hasPayments = true;
+            }
+        }
+
+        if (!hasPayments) {
+            System.out.println("No payments to display.");
+        }
+    }
+
     }
 
 

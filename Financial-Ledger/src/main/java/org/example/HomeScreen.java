@@ -33,8 +33,8 @@ public class HomeScreen {
 
             String userChoice = scanner1.next();
 
-            switch (userChoice) {
-                case "D", "d":
+            switch (userChoice.toLowerCase()) {
+                case  "d":
                     Scanner scanner2 = new Scanner(System.in);
                     System.out.println("Enter the date in YYYY-MM-DD format: ");
                     String dateInput = scanner2.nextLine();
@@ -53,7 +53,7 @@ public class HomeScreen {
                     transactionOrganizer.addTransaction(deposit);
                     break;
 
-                case "P", "p":
+                case  "p":
                     Scanner scanner3 = new Scanner(System.in);
                     System.out.println("Enter the date in YYYY-MM-DD format: ");
                     String dateInput2 = scanner3.nextLine();
@@ -72,11 +72,12 @@ public class HomeScreen {
                     transactionOrganizer.addTransaction(payment);
                     break;
 
-                case "L", "l":
-                    LedgerScreen.display2();
+                case  "l":
+                    LedgerScreen ledgerScreen = new LedgerScreen(transactionOrganizer);
+                    ledgerScreen.display2();
                     break;
 
-                case "X", "x":
+                case  "x":
                     System.out.println("Thank you for using our services. Goodbye.");
                     exit = true;
                     break;
