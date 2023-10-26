@@ -34,18 +34,17 @@ public class TransactionOrganizer {
 
     //method
     public void makeTransaction(ArrayList<Transactions> list) {
-        try (BufferedWriter bufWriter = new BufferedWriter ( new FileWriter("transactions.csv", true ))) {
+        try (BufferedWriter bufWriter = new BufferedWriter(new FileWriter("transactions.csv", true))) {
 
             for (Transactions transaction : list) {
-              String  info =
-                        transaction.getTransDate() + " | " +
-                        transaction.getTransTime() + " | " +
-                        transaction.getDescription() + " | " +
-                        transaction.getVendor() + " | " +
-                        transaction.getAmount();
+                String info =
+                        transaction.getTransDate() + "|" +
+                                transaction.getTransTime() + "|" +
+                                transaction.getDescription() + "|" +
+                                transaction.getVendor() + "|" +
+                                String.format("%.2f", transaction.getAmount());
 
                 bufWriter.write(info + "\n");
-
                 System.out.println("\nThank you. Your entry has been saved.");
             } //end of for loop
             bufWriter.close();
@@ -54,17 +53,17 @@ public class TransactionOrganizer {
             throw new RuntimeException(e);
         }
 
-    }// end of add transaction method
+    }// end of make transaction method
 
 
     //May need to change else statement
-    public List<Transactions> readEntries() {
+    public ArrayList<Transactions> readEntries() {
         try (BufferedReader transFileReader = new BufferedReader(new FileReader("transactions.csv"))) {
             String transactionString;
             while ((transactionString = transFileReader.readLine()) != null) {
                 String[] transactionData = transactionString.split("\\|");
 
-               // if (transactionData.length == 5) {
+                if (transactionData.length == 5) {
                     LocalDate transDate = LocalDate.parse(transactionData[0]);
                     LocalTime transTime = LocalTime.parse(transactionData[1]);
                     String description = transactionData[2];
@@ -74,13 +73,11 @@ public class TransactionOrganizer {
                     // Creates a Transaction object and stores it
                     Transactions entry = new Transactions(transDate, transTime, description, vendor, amount);
                     transList.add(entry);
-                    Transactions test = new Transactions(LocalDate.now(), LocalTime.now(), "pumpkin latte", "caribou coffee", 3.50);
-                    addTransaction(test);
 
-               // } else {
-                    //Fix
-                  //  System.out.println("Invalid data provided.");
-              //  }
+                } //else {
+                //Fix here
+                // System.out.println("Invalid data provided.");
+                // }
             } //end of while loop
             transFileReader.close();
 
@@ -90,8 +87,9 @@ public class TransactionOrganizer {
         return transList;
 
     }//end of read entry
-
-
-
 }
+
+
+
+
 

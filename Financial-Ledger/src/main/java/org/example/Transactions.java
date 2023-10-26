@@ -70,12 +70,11 @@ public class Transactions {
     //TODO: fix toString format
     @Override
     public String toString() {
-        return "Transactions: " +
-                "description= " + description + '\'' +
-                ", vendor= " + vendor + '\'' +
-                ", amount= " + amount +
-                ", transDate= " + transDate +
-                ", transTime= " + transTime +
-                '}';
+        return
+                            transDate +
+                " | " +  transTime +
+                " | " + description +
+                " | " + vendor +
+                " | " + amount;
     }
 }

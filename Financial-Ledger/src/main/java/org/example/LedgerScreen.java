@@ -54,7 +54,7 @@ import java.util.Scanner;
         }// end of display method
 
     public void displayAll() {
-        List<Transactions> transactions = transactionOrganizer.readEntries();
+        ArrayList<Transactions> transactions = (ArrayList<Transactions>) transactionOrganizer.readEntries();
         Collections.reverse(transactions);
 
         if (transactions.isEmpty()) {
@@ -67,7 +67,7 @@ import java.util.Scanner;
     }
 
     public void displayDeposits() {
-        List<Transactions> transactions = transactionOrganizer.readEntries();
+        ArrayList<Transactions> transactions = (ArrayList<Transactions>) transactionOrganizer.readEntries();
         Collections.reverse(transactions);
 
         boolean hasDeposits = false;
@@ -84,7 +84,7 @@ import java.util.Scanner;
     }
 
     public void displayPayments() {
-        List<Transactions> transactions = transactionOrganizer.readEntries();
+        ArrayList<Transactions> transactions = (ArrayList<Transactions>) transactionOrganizer.readEntries();
         Collections.reverse(transactions);
 
         boolean hasPayments = false;

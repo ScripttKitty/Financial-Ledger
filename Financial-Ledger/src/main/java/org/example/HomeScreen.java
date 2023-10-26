@@ -65,7 +65,7 @@ public class HomeScreen {
                     String desc2 = scanner3.nextLine();
                     System.out.println("Enter the vendor name: ");
                     String vendor2 = scanner3.nextLine();
-                    System.out.println("Enter the amount paid: \n$");
+                    System.out.println("Enter the amount paid in 1234.56 format:  ");
                     Double amount2 = scanner3.nextDouble();
 
                     Transactions payment = new Transactions(date2, time2, desc2, vendor2, -amount2);
