@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 //Main method
     public class LedgerScreen {
-        private TransactionOrganizer transactionOrganizer;
+        private static TransactionOrganizer transactionOrganizer;
 
         //method
         public LedgerScreen(TransactionOrganizer transactionOrganizer) {
@@ -15,11 +15,12 @@ import java.util.Scanner;
         }
 
         //method maybe rename display2
-        public void display() {
+        public static void display2() {
             Scanner scanner = new Scanner(System.in);
             boolean exit = false;
+
             while (!exit) {
-                System.out.println("What would you like to see?\n");
+                System.out.println("\nWhat would you like to see?\n");
                 System.out.println("A) All Entries");
                 System.out.println("D) Deposits");
                 System.out.println("P) Payments");
@@ -31,12 +32,15 @@ import java.util.Scanner;
                 switch (userChoice) {
                     case "A","a":
                         // Use display all entries method here
+                        transactionOrganizer.displayAll();
                         break;
                     case "D","d":
                         // Use display deposits method here
+                        transactionOrganizer.displayDeposits();
                         break;
                     case "P","p":
                         // Use display payments method here
+                        transactionOrganizer.displayPayments();
                         break;
                     case "R", "r:":
                         //  Use report screen method here
@@ -44,7 +48,7 @@ import java.util.Scanner;
                     case "H", "h":
                         return;
                     default:
-                        System.out.println("Invalid option. Please try again.");
+                        System.out.println("Not a valid option. Please try again.");
                 } //end of switch
             } //end of loop
         }

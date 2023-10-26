@@ -6,10 +6,10 @@
 package org.example;
 
 import java.io.*;
-import java.nio.Buffer;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 //This class will contain methods to read from and write to the transactions.csv file
@@ -75,6 +75,7 @@ public class TransactionOrganizer {
                     // Creates a Transaction object and stores it
                     Transactions entry = new Transactions(transDate, transTime, description, vendor, amount);
                     transList.add(entry);
+                    Transactions test = new Transactions(LocalDate.now(), LocalTime.now(), "pumpkin latte", "caribou coffee", 3.50);
 
                // } else {
                     //Fix
@@ -90,15 +91,36 @@ public class TransactionOrganizer {
 
 
     public void displayAll(){
+        List<Transactions> list = readEntries();
+        Collections.reverse(list);
+
+        for (Transactions transactions : list) {
+            System.out.println(transactions);
+        }
 
     }
 
     public void displayDeposits(){
+        List<Transactions> list = readEntries();
+        Collections.reverse(list);
+
+        for (Transactions transactions: list){
+            if(transactions.getAmount() > 0){
+                System.out.println(transactions);
+            }
+        }
 
     }
 
     public void displayPayments(){
+        List<Transactions> list = readEntries();
+        Collections.reverse(list);
 
+        for (Transactions transactions: list){
+            if(transactions.getAmount() < 0){
+                System.out.println(transactions);
+            }
+        }
     }
 
 

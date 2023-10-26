@@ -1,8 +1,6 @@
-/*TODO: add deposit method
-    add payment and deposit to CSV file
-
+/*TODO:  add confirmation for deposit and payment
+   if time permits, try to add loops if a user enters a wrong format
  */
-
 
 package org.example;
 
@@ -27,7 +25,7 @@ public class HomeScreen {
 
         //This while loop runs and displays the choices for the user
         while (!exit) {
-            System.out.println("Welcome! What would you like to do today?\n");
+            System.out.println("\nPlease select an option: \n");
             System.out.println("D) Add Deposit");
             System.out.println("P) Make Payment (Debit)");
             System.out.println("L) Ledger");
@@ -54,6 +52,7 @@ public class HomeScreen {
                     Transactions deposit = new Transactions(date, time, desc, vendor, amount);
                     transactionOrganizer.addTransaction(deposit);
                     break;
+
                 case "P", "p":
                     Scanner scanner3 = new Scanner(System.in);
                     System.out.println("Enter the date in YYYY-MM-DD format: ");
@@ -66,42 +65,27 @@ public class HomeScreen {
                     String desc2 = scanner3.nextLine();
                     System.out.println("Enter the vendor name: ");
                     String vendor2 = scanner3.nextLine();
-                    System.out.println("Enter the amount paid: ");
+                    System.out.println("Enter the amount paid: /n$");
                     Double amount2 = scanner3.nextDouble();
 
                     Transactions payment = new Transactions(date2, time2, desc2, vendor2, -amount2);
                     transactionOrganizer.addTransaction(payment);
                     break;
+
                 case "L", "l":
-                    // Implement the ledger
+                    LedgerScreen.display2();
                     break;
+
                 case "X", "x":
                     System.out.println("Thank you for using our services. Goodbye.");
                     exit = true;
                     break;
+
                 default:
                     System.out.println("Not a valid option. Please try again.");
-            }
-
-
-        }
-
-    }
-
-    //method
-    public void addDeposit() {
-        Scanner scanner = new Scanner(System.in);
-        //Transactions depositTransaction = new Transactions();
-
-
-    }
-
-    //method
-    public static void makePayment() {
-        //add it to the CSV file
-
-    }
-
+            } //end of switch
+        } //end of while loop
+    } //end of display method
 
     //Come back to this if I have time
     public boolean confirmDate() {
