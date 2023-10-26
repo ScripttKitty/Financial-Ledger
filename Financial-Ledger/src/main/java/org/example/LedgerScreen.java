@@ -87,15 +87,15 @@ import java.util.Scanner;
         ArrayList<Transactions> transactions = (ArrayList<Transactions>) transactionOrganizer.readEntries();
         Collections.reverse(transactions);
 
-        boolean hasPayments = false;
+        boolean payments = false;
         for (Transactions transaction : transactions) {
             if (transaction.getAmount() < 0) {
                 System.out.println(transaction);
-                hasPayments = true;
+                payments = true;
             }
         }
 
-        if (!hasPayments) {
+        if (!payments) {
             System.out.println("No payments to display.");
         }
     }
