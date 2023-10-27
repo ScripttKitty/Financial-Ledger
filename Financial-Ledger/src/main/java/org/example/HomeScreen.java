@@ -1,23 +1,23 @@
-/*TODO:  add confirmation for deposit and payment
-   if time permits, try to add loops if a user enters a wrong format
- */
-
 package org.example;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
 
-//main method
+//Main method
 public class HomeScreen {
     private TransactionOrganizer transactionOrganizer;
 
-    //THis method
+    /*
+This constructor allows the LedgerScreen instance to work with TransactionOrganizer
+ for managing the transactions. You'll see various versions of this constructor
+ throughout my classes.
+ */
     public HomeScreen(TransactionOrganizer transactionOrganizer) {
         this.transactionOrganizer = transactionOrganizer;
     }
 
-    //This method is used to display the home screen and saves their input under userChoice
+    //This method is used to display the home screen and saves user input under userChoice
     public void display() {
         Scanner scanner1 = new Scanner(System.in);
 
@@ -34,7 +34,7 @@ public class HomeScreen {
             String userChoice = scanner1.next();
 
             switch (userChoice.toLowerCase()) {
-                case  "d":
+                case "d":
                     Scanner scanner2 = new Scanner(System.in);
                     System.out.println("Enter the date in YYYY-MM-DD format: ");
                     String dateInput = scanner2.nextLine();
@@ -53,7 +53,7 @@ public class HomeScreen {
                     transactionOrganizer.addTransaction(deposit);
                     break;
 
-                case  "p":
+                case "p":
                     Scanner scanner3 = new Scanner(System.in);
                     System.out.println("Enter the date in YYYY-MM-DD format: ");
                     String dateInput2 = scanner3.nextLine();
@@ -72,23 +72,23 @@ public class HomeScreen {
                     transactionOrganizer.addTransaction(payment);
                     break;
 
-                case  "l":
+                case "l":
                     LedgerScreen ledgerScreen = new LedgerScreen(transactionOrganizer);
                     ledgerScreen.display2();
                     break;
 
-                case  "x":
+                case "x":
                     System.out.println("Thank you for using our services. Goodbye.");
                     exit = true;
                     break;
 
                 default:
                     System.out.println("Not a valid option. Please try again.");
-            } //end of switch
-        } //end of while loop
-    } //end of display method
+            }
+        }
+    }
 
-    //Come back to this if I have time
+    //Come back to this if there is time
     public boolean confirmDate() {
 
         Scanner scanner = new Scanner(System.in);

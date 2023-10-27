@@ -1,7 +1,9 @@
-//TODO: before finishing make sure to reformat code in all classes
-//TODO: Add descriptions of each method's functionality, parameters, parameter types, and return types. IN PROPER FORMAT.
-
-
+/**
+ * Financial Ledger
+ * @author Annie Santamaria
+ * description: This application is used for storing, reading, sorting, and writing financial data. There are three different screens,
+ * all with various options that the user can make. User input will be saved into a csv file.
+ */
 
 package org.example;
 
@@ -13,7 +15,6 @@ public class Main {
         TransactionOrganizer transactionOrganizer = new TransactionOrganizer();
         HomeScreen homeScreen = new HomeScreen(transactionOrganizer);
         homeScreen.display();
-
 
 
     }

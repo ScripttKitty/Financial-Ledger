@@ -1,5 +1,3 @@
-//TODO: delete any methods we do not need in the end
-
 package org.example;
 
 import java.time.LocalDate;
@@ -28,16 +26,9 @@ public class Transactions {
         return transDate;
     }
 
-    public void setTransDate(LocalDate transDate) {
-        this.transDate = transDate;
-    }
 
     public LocalTime getTransTime() {
         return transTime;
-    }
-
-    public void setTransTime(LocalTime transTime) {
-        this.transTime = transTime;
     }
 
 
@@ -45,17 +36,9 @@ public class Transactions {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
 
     public String getVendor() {
         return vendor;
-    }
-
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
     }
 
 
@@ -63,18 +46,14 @@ public class Transactions {
         return amount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
 
-    //TODO: fix toString format
     @Override
     public String toString() {
         return
-                            transDate +
-                " | " +  transTime +
-                " | " + description +
-                " | " + vendor +
-                " | " + amount;
+                transDate +
+                        " | " + transTime +
+                        " | " + description +
+                        " | " + vendor +
+                        " | " + amount;
     }
 }

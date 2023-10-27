@@ -1,8 +1,3 @@
-/*TODO:
-    finish addTransaction method
- * Finish readAllEntries method
-*/
-
 package org.example;
 
 import java.io.*;
@@ -10,14 +5,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-//This class will contain methods to read from and write to the transactions.csv file
+//This class contains methods to read from and write to the transactions.csv file
 public class TransactionOrganizer {
     //declaring List
     private ArrayList<Transactions> transList;
 
     //default constructor
     public TransactionOrganizer() {
-
         transList = new ArrayList<>();
     }
 
@@ -30,7 +24,7 @@ public class TransactionOrganizer {
     }
 
 
-    //method
+    //This method writes new user entry into the transactions.csv file
     public void makeTransaction(ArrayList<Transactions> list) {
         try (BufferedWriter bufWriter = new BufferedWriter(new FileWriter("transactions.csv", true))) {
 
@@ -44,17 +38,17 @@ public class TransactionOrganizer {
 
                 bufWriter.write(info + "\n");
                 System.out.println("\nThank you. Your entry has been saved.");
-            } //end of for loop
+            }
             bufWriter.close();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-    }// end of make transaction method
+    }
 
 
-    //May need to change else statement
+    //This method reads and divides the user entries in transactions.csv
     public ArrayList<Transactions> readEntries() {
         try (BufferedReader transFileReader = new BufferedReader(new FileReader("transactions.csv"))) {
             String transactionString;
@@ -72,19 +66,15 @@ public class TransactionOrganizer {
                     Transactions entry = new Transactions(transDate, transTime, description, vendor, amount);
                     transList.add(entry);
 
-                } //else {
-                //Fix here
-                // System.out.println("Invalid data provided.");
-                // }
-            } //end of while loop
+                }
+            }
             transFileReader.close();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
         return transList;
-
-    }//end of read entry
+    }
 }
 
 
