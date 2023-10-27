@@ -27,7 +27,7 @@ To get started with this application you must first use the Payment or Deposit o
 
 1. I wanted to only use two classes while making my application. It became very messy very fast and eventually ended with six.
 2. In my code you can see inconsistencies with how I use this
-    for (Transactions transaction : list)
+    - (Transactions transaction : list) -
 piece of code throughout my project. In the ReportScreen class I replace "transaction" with "x" becasue I got tired of reading and writing the word "transaction".
 3. My project will crash if you enter a date or time incorrectly.
 
